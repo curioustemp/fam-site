@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header class='header'>
+	<h2 class='header__title'>Welcome to Winnfam.net!</h2>
+  <p class='header__username'>
+    <a href='/user/profile'>{{ current_user.username }}</a>
+  </p>
+</header>
+
+  <div>
+    {% for post in posts %}
+        <article class='post'>
+          <h4 class='post__title'>{{ post.title }}</h4>
+          <p class='post__content'>{{ post.content }}</p>
+        </article>
+    {% endfor %}
+  </div>
+
+  {% include 'post_form.html' %}
+
+  <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+
+      .header {
+        background-color: lightblue;
+      }
+
+     .header__title {
+       display: inline-block;
+     }
+
+     .header__username {
+      float: right;
+      display: inline-block;
+      padding: 10px;
+     }
+
+     .post {
+        padding: 10px;
+        margin: 5px;
+        background-color: lightgray;
+     }
+
+     .post__title {
+      margin: 0;
+     }
+
+     .post__content {
+        margin: 10px 0;
+     }
+  <style>
+{% endblock %}

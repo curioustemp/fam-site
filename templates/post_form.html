@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='form-wrap'>
+<button id='post-form-btn' onclick='toggleForm()'>Post</button>
+
+<form id='post-form' style='display: none;' class='post__form' action='/post', method='post'>
+	<h2 style='margin: 8px 0;'>Post</h2>
+	<input class='post__input' name='title' placeholder='title'></input>
+	<textarea class='post__input' name='content' placeholder='content'></textarea>
+	<input type='submit' /> <input type='button' onclick='toggleForm()' value='cancel' />
+</form>
+</div>
+<script>
+	var formShown = false;
+	function toggleForm() {
+		form = document.getElementById('post-form');
+		btn = document.getElementById('post-form-btn');
+
+        var hideStyle = 'display: none;';
+		if (!formShown) {
+			formShown = true;
+			form.style = ''
+			btn.style= hideStyle;
+		} else if (formShown) {
+			formShown = false;
+			form.style = hideStyle
+			btn.style = '';
+		}
+	}
+</script>
+<style>
+    .form-wrap {
+    	padding: 5px;
+    }
+	.post__form {
+		width: 300px;
+		margin: 0 auto;
+	}
+
+	.post__input {
+		width: 100%;
+		margin: 10px 0;
+		padding: 5px;
+	}
+</style>
+{% endblock %}
